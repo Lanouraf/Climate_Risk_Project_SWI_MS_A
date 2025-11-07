@@ -1,2 +1,3 @@
 # Ignore all files and folders under 'contenu pedagogique/files'
 /contenu pedagogique/files/**
+/geopandas-tutorial/data/**
