@@ -1,7 +1,10 @@
 # Climate_Risk_Project_SWI_MS_A
 
-## Sources des bases de données
+pour recuperer les dependance:
+uv pip install
+uv sync 
 
+## Sources des bases de données
 **SWI quotidien grille Safran**  
 https://www.data.gouv.fr/datasets/donnees-changement-climatique-sim-quotidienne/
 

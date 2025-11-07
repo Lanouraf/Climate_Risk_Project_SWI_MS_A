@@ -1,3 +1,5 @@
-# Ignore all files and folders under 'contenu pedagogique/files'
-/contenu pedagogique/files/**
-/geopandas-tutorial/data/**
+Contenu_pedagogique/TP-SpatialStats/files/grilleKm.txt
+Contenu_pedagogique/TP-SpatialStats/files/simulation.txt
+Contenu_pedagogique/TP-SpatialStats/files/stationsKm.txt
+Contenu_pedagogique/geopandas-tutorial/data/*
+data/*
