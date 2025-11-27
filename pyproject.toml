@@ -5,8 +5,14 @@ description = "Add your description here"
 readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
+    "contextily>=1.7.0",
+    "datawrangler>=0.2",
+    "folium>=0.20.0",
     "geopandas>=1.1.1",
+    "mapclassify>=2.8.1",
     "pandas>=2.3.3",
+    "pyarrow>=22.0.0",
+    "rasterio>=1.4.3",
     "scikit-gstat>=1.0.21",
     "scipy>=1.15.3",
     "seaborn>=0.13.2",
