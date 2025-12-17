@@ -54,37 +54,31 @@ def monthly_df_to_gpkg(
     layer_name: str = "datagouv_swimonthly",
     x_col: str = "LAMBX",
     y_col: str = "LAMBY",
-    crs: str = "EPSG:27572"
+    crs: str = "EPSG:27572",
+    units: str = "hm",          # "hm" (hectomètres) ou "m"
 ) -> Path:
     """
-    Convertit un DataFrame mensuel (avec colonnes LAMBX/LAMBY) en GeoPackage.
+    Convertit un DataFrame mensuel (LAMBX/LAMBY) en GeoPackage.
 
-    Parameters
-    ----------
-    df : pandas.DataFrame
-        DataFrame contenant au moins les colonnes x_col et y_col.
-    output_gpkg_path : str
-        Chemin relatif du fichier GeoPackage à créer.
-    layer_name : str
-        Nom de la couche à écrire dans le GPKG.
-    x_col, y_col : str
-        Noms des colonnes de coordonnées.
-    crs : str
-        Code EPSG de la projection (par défaut EPSG:27572).
-
-    Returns
-    -------
-    Path
-        Chemin du GeoPackage.
+    Si units="hm", les coordonnées sont supposées en hectomètres
+    et sont converties en mètres avant création de la géométrie.
     """
     gpkg_path = Path(output_gpkg_path)
 
     if not gpkg_path.exists():
         gpkg_path.parent.mkdir(parents=True, exist_ok=True)
 
+        # conversion éventuelle hm -> m
+        if units == "hm":
+            x = df[x_col] * 100
+            y = df[y_col] * 100
+        else:
+            x = df[x_col]
+            y = df[y_col]
+
         gdf = gpd.GeoDataFrame(
             df,
-            geometry=[Point(xy) for xy in zip(df[x_col], df[y_col])],
+            geometry=[Point(xy) for xy in zip(x, y)],
             crs=crs
         )
 
